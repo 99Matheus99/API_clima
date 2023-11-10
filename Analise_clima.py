@@ -7,10 +7,16 @@ if response.status_code == 200: # caso ele tenha conseguido se comunicar
     time = data["hourly"]["time"]
     cloud_cover = data["hourly"]["cloud_cover"]
     # O '[]' no meio do for significa que a cada item que adiciono, ele já sai no formato de lista
-    form_time = [t.split('T')[1] for t in time] # no tempo, divido em 2 strings a partir do caractere 'T', e depois pego o item 1 dessa string separada
+    form_time = [t.split('T')[1]for t in time] # no tempo, divido em 2 strings a partir do caractere 'T', e depois pego o item 1 dessa string separada
+    # Pego os valores relativo ao dia 2023-11-09
+    form_time = form_time[:24]
+    cloud_cover = cloud_cover[:24]
+    # Pego os valores relativo ao dia 2023-11-10
+    print(form_time[25:49]) #
     # Plot do gráfico
-    plt.figure()
+    plt.figure(figsize=(12,4))
     plt.plot(form_time, cloud_cover, marker='o', linestyle='-', color='b')
+    plt.tight_layout()
     plt.show()
 elif response.status_code == 404:
     print('Não encontrado!')
