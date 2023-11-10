@@ -14,9 +14,12 @@ if response.status_code == 200: # caso ele tenha conseguido se comunicar
     # Pego os valores relativo ao dia 2023-11-10
     print(form_time[25:49]) #
     # Plot do gráfico
-    plt.figure(figsize=(12,4))
+    plt.figure(figsize=(14,6))
     plt.plot(form_time, cloud_cover, marker='o', linestyle='-', color='b')
-    plt.tight_layout()
+    plt.title('Quantidade de nuvens no dia')
+    plt.xlabel('Hora')
+    plt.ylabel('Quantidade')
+    plt.grid(True)
     plt.show()
 elif response.status_code == 404:
     print('Não encontrado!')
